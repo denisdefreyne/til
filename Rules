@@ -4,6 +4,7 @@ compile '/index.rhtml' do
   filter :erb
   layout '/home.*'
   layout '/default.*'
+  filter :relativize_paths, type: :html
   write '/index.html'
 end
 
@@ -11,6 +12,7 @@ compile '/**/*.md' do
   filter :kramdown, input: 'GFM'
   layout '/post.*'
   layout '/default.*'
+  filter :relativize_paths, type: :html
   write item.identifier.without_ext + '/index.html'
 end
 

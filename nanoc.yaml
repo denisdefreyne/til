@@ -2,3 +2,12 @@ text_extensions:
   - md
   - rhtml
   - css
+
+prune:
+  auto_prune: true
+  exclude: [ '.git' ]
+
+deploy:
+  default:
+    kind: git
+    branch: gh-pages

@@ -14,7 +14,8 @@ body {
 
   font-family: Martel Sans, Helvetica, Arial, sans-serif;
 
-  max-width: 700px;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 a {
@@ -31,10 +32,13 @@ a:hover {
 }
 
 .meta {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+
   font-size: 15px;
 
   margin: 0;
-  padding: 0 20px 0 0;
+  padding: 19px 20px 0 0;
 
   float: left;
   width: 190px;
@@ -48,13 +52,14 @@ a:hover {
 }
 
 .nav {
-  position: absolute;
-  top: 40px;
-  left: 40px;
+  float: left;
+
+  width: 190px;
+  margin-top: 30px;
 }
 
 .content {
-  margin-left: 200px;
+  margin-left: 210px;
 }
 
 h1, h2 {
@@ -66,7 +71,7 @@ h1 {
   font-size: 40px;
   line-height: 40px;
 
-  margin: 0 0 40px 200px;
+  margin: 0 0 40px 210px;
   padding-top: 15px;
 }
 
@@ -74,7 +79,7 @@ h2 {
   font-size: 28px;
   line-height: 40px;
 
-  margin: 60px 0 20px 200px;
+  margin: 60px 0 20px 210px;
 }
 
 p {

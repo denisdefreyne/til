@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TIL: tee and sudo</title>
+    <link href="https://fonts.googleapis.com/css?family=Patua+One|Fira+Mono:400,700|Martel+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.4.1">
+  </head>
+  <body>
+    <div class=nav><a href="/">&larr; back home</a></div>
+<h1>tee and sudo</h1>
+<div class=meta>
+  <div class=meta-date>November 22nd, 2016</div>
+</div>
+<div class=content>
+  
+<p><code>tee</code> is a command that passes everything from standard input into standard output, but also writes everything read from standard input to a file:</p>
+
+<pre><code>% echo hi | tee greeting.txt
+hi
+% cat greeting.txt
+hi
+</code></pre>
+
+<p><code>tee</code> becomes useful when you want to redirect as root. Imagine a read-only directory:</p>
+
+<pre><code>% sudo ls -l | grep restricted_files
+drwxr-xr-x  2 root     staff     68 Nov 21 21:39 restricted_files/
+</code></pre>
+
+<p>Redirecting with <code>sudo</code> doesn’t work, because <code>sudo</code> does not affect redirection:</p>
+
+<pre><code>% sudo echo hi &gt; restricted_files/greeting.txt
+An error occurred while redirecting file 'restricted_files/greeting.txt'
+open: Permission denied
+</code></pre>
+
+<p>Piping the command through <code>tee</code> run as root, however, does work:</p>
+
+<pre><code>% echo hi | sudo tee restricted_files/greeting.txt
+hi
+% cat restricted_files/greeting.txt
+hi
+</code></pre>
+
+<p>As an added benefit, the original command is no longer being run as root.</p>
+
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TIL: Today I learned</title>
+    <link href="https://fonts.googleapis.com/css?family=Patua+One|Fira+Mono:400,700|Martel+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.4.1">
+  </head>
+  <body>
+    <h1>Today I learned</h1>
+
+<div class=content>
+  <p class=intro>I learn new bits every day. Here, I’ll try to share the things that I learned that might be useful to others, too.</p>
+</div>
+
+
+<div class="meta h2">
+  <div class=meta-date>November 22nd, 2016</div>
+</div>
+<div class=content>
+  <h2><a href="/2016/11-22-sudo-tee/">tee and sudo</a></h2>
+  
+<p><code>tee</code> is a command that passes everything from standard input into standard output, but also writes everything read from standard input to a file:</p>
+
+<pre><code>% echo hi | tee greeting.txt
+hi
+% cat greeting.txt
+hi
+</code></pre>
+
+<p><code>tee</code> becomes useful when you want to redirect as root. Imagine a read-only directory:</p>
+
+<pre><code>% sudo ls -l | grep restricted_files
+drwxr-xr-x  2 root     staff     68 Nov 21 21:39 restricted_files/
+</code></pre>
+
+<p>Redirecting with <code>sudo</code> doesn’t work, because <code>sudo</code> does not affect redirection:</p>
+
+<pre><code>% sudo echo hi &gt; restricted_files/greeting.txt
+An error occurred while redirecting file 'restricted_files/greeting.txt'
+open: Permission denied
+</code></pre>
+
+<p>Piping the command through <code>tee</code> run as root, however, does work:</p>
+
+<pre><code>% echo hi | sudo tee restricted_files/greeting.txt
+hi
+% cat restricted_files/greeting.txt
+hi
+</code></pre>
+
+<p>As an added benefit, the original command is no longer being run as root.</p>
+
+</div>
+
+<div class="meta h2">
+  <div class=meta-date>November 21st, 2016</div>
+</div>
+<div class=content>
+  <h2><a href="/2016/11-21-thread-list/">Thread.list</a></h2>
+  
+<p>Ruby has <code>Thread.list</code>, which returns a list of all threads in the current process:</p>
+
+<pre><code>irb&gt; Thread.list
+=&gt; [#&lt;Thread:0x007f8caa07f448 run&gt;]
+
+irb&gt; Thread.new { sleep 1000 }
+=&gt; #&lt;Thread:0x007f8ca988abc0@(irb):2 run&gt;
+
+irb&gt; Thread.list
+=&gt; [
+  #&lt;Thread:0x007f8caa07f448 run&gt;,
+  #&lt;Thread:0x007f8ca988abc0@(irb):2 sleep&gt;]
+</code></pre>
+
+</div>
+
+
+
+  </body>
+</html>

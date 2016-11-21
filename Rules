@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+compile '/index.rhtml' do
+  filter :erb
+  layout '/home.*'
+  layout '/default.*'
+  write '/index.html'
+end
+
+compile '/**/*.md' do
+  filter :kramdown, input: 'GFM'
+  layout '/post.*'
+  layout '/default.*'
+  write item.identifier.without_ext + '/index.html'
+end
+
+compile '/**/*' do
+  write item.identifier.to_s
+end
+
+layout '/**/*', :erb

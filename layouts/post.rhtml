@@ -1,0 +1,6 @@
+<h1><%=h @item[:title] %></h1>
+<div class=meta>
+  <div class=meta-date><%= date_for(@item) %></div>
+  <div class=nav><a href="/">&larr; back home</a></div>
+</div>
+<%= yield %>

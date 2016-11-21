@@ -44,6 +44,10 @@ a:hover {
   width: 190px;
 }
 
+.meta.h2 {
+  margin-top: 20px;
+}
+
 .meta-date {
   text-align: right;
 
@@ -79,7 +83,7 @@ h2 {
   font-size: 28px;
   line-height: 40px;
 
-  margin: 60px 0 20px 210px;
+  margin: 40px 0 20px 0;
 }
 
 p {

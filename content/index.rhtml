@@ -6,10 +6,12 @@ title: Today I learned
   <p class=intro>I learn new bits every day. Here, I’ll try to share the things that I learned that might be useful to others, too.</p>
 </div>
 
-<% @items.find_all("/201*/**/*").sort_by { |i| i.identifier }.each do |i| %>
-<h2><%= link_to h(i[:title]), i %></h2>
-<div class=meta>
+<% @items.find_all("/201*/**/*").sort_by { |i| i.identifier }.reverse_each do |i| %>
+<div class="meta h2">
   <div class=meta-date><%= date_for(i) %></div>
 </div>
-<div class=content><%= i.compiled_content %></div>
+<div class=content>
+  <h2><%= link_to h(i[:title]), i %></h2>
+  <%= i.compiled_content %>
+</div>
 <% end %>

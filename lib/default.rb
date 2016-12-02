@@ -31,5 +31,5 @@ end
 def date_for(item)
   match = item.identifier.to_s.match(%r{^/(\d{4})/(\d{2})-(\d{2})})
   year, month, day = *match[1..-1].map(&:to_i)
-  "#{month.to_mon_s} #{day.ordinal}, #{year}"
+  "#{month.to_mon_s} #{day.ordinal}<br>#{year}"
 end

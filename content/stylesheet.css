@@ -10,9 +10,10 @@
 body {
   background: #fff;
 
-  padding: 20px;
+  padding: 40px 20px;
 
-  font-family: Martel Sans, Helvetica, Arial, sans-serif;
+  font-family: Signika, Helvetica, Arial, sans-serif;
+  font-weight: lighter;
 
   margin: 0 auto;
   max-width: 800px;
@@ -24,7 +25,7 @@ a {
 
 a:link,
 a:visited {
-  color: #f30;
+  color: #1ae;
 }
 
 a:hover {
@@ -32,16 +33,23 @@ a:hover {
 }
 
 .meta {
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
+  border-top: 2px solid #1ae;
 
   font-size: 15px;
 
   margin: 0;
-  padding: 19px 20px 0 0;
+  padding: 9px 20px 0 0;
 
   float: left;
-  width: 190px;
+  width: 210px;
+}
+
+body.post .meta {
+  margin: 0;
+  padding: 9px 20px 0 0;
+
+  float: left;
+  width: 170px;
 }
 
 .meta.h2 {
@@ -49,17 +57,25 @@ a:hover {
 }
 
 .meta-date {
-  text-align: right;
+  letter-spacing: 1px;
 
-  font-size: 15px;
-  font-style: italic;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .nav {
   float: left;
 
-  width: 190px;
-  margin-top: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  width: 170px;
+  margin-top: 5px;
+}
+
+.nav a {
+  display: block;
+  padding: 5px;
 }
 
 .content {
@@ -67,16 +83,42 @@ a:hover {
 }
 
 h1, h2 {
-  font-family: Patua One, sans-serif;
+  font-family: Signika, sans-serif;
   font-weight: bold;
 }
 
+h2 a {
+  display: block;
+
+  padding: 10px;
+
+  color: #fff;
+}
+
+h2 a:link,
+h2 a:visited,
+.nav a:link,
+.nav a:visited {
+  background: #1ae;
+  color: #fff;
+}
+
+h2 a:hover,
+.nav a:hover {
+  background: #000;
+}
+
 h1 {
-  font-size: 40px;
-  line-height: 40px;
+  font-size: 60px;
+  line-height: 60px;
 
   margin: 0 0 40px 210px;
-  padding-top: 15px;
+}
+
+body.post h1 {
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 0;
 }
 
 h2 {
@@ -110,4 +152,5 @@ pre {
 
 code {
   font-family: Fira Mono, Menlo, Monaco, Courier, monospace;
+  font-size: 14px;
 }

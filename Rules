@@ -11,7 +11,7 @@ end
 compile '/**/*.md' do
   filter :kramdown, input: 'GFM'
   layout '/post.*'
-  layout '/default.*'
+  layout '/default.*', locals: { body_class: 'post' }
   filter :relativize_paths, type: :html
   write item.identifier.without_ext + '/index.html'
 end

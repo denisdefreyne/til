@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>TIL: Today I learned</title>
     <link href="https://fonts.googleapis.com/css?family=Signika:300,600%7CFira+Mono:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheet-1f24b22e9.css">
     <meta name="generator" content="Nanoc 4.4.1">
   </head>
   <body>
@@ -15,6 +15,59 @@
   <p class="intro">I learn new bits every day. Here, I’ll try to share the things that I learned that might be useful to others, too.</p>
 </div>
 
+
+<div class="meta h2">
+  <div class="meta-date">December 3rd<br>2016</div>
+</div>
+<div class="content">
+  <h2><a href="2016/12-03-terminal-cursor-movement/">Moving the terminal cursor</a></h2>
+  
+<p>When you write stuff to the terminal, characters are printed from left to right, and wrap around the right hand side of the terminal onto the next line if necessary. That’s how a terminal typically works, but a terminal is also a matrix—each character position in the terminal has X and Y coordinates—and there are ways to write text at arbitrary positions, and thus use the terminal as a drawing board.</p>
+
+<p>The way to do this is by writing the <em>control sequence introducer</em> (CSI) <code>\e[</code>, followed by instructions that describe what precisely you want to do.</p>
+
+<p>A CSI followed by the character <code>B</code> will move the cursor down a single line. For example, the following Ruby code</p>
+
+<pre><code>puts "hello\e[Bworld"
+</code></pre>
+
+<p>will print</p>
+
+<pre><code>hello
+     world
+</code></pre>
+
+<p><code>A</code> moves the cursor up, <code>B</code> moves it down, <code>C</code> moves it right, and <code>D</code> moves it left.</p>
+
+<p>You can prefix it with a number to make it move the given distance:</p>
+
+<pre><code>puts "hello\e[10Cworld"
+</code></pre>
+
+<pre><code>hello          world
+</code></pre>
+
+<p><code>G</code> moves it to the beginning or the line, or to the given column if you give it a number:</p>
+
+<pre><code>puts "2 + 3 = 7\e[G4"
+</code></pre>
+
+<pre><code>4 + 3 = 7
+</code></pre>
+
+<p><code>K</code> erases all characters after the cursor. For example:</p>
+
+<pre><code>(1..3).cycle.each do |num|
+  $stdout &lt;&lt; '.' * num &lt;&lt; "\e[K" &lt;&lt; "\e[G"
+  sleep 0.2
+end
+</code></pre>
+
+<p>will forever print dots:</p>
+
+<pre><span class="blink-1">.</span><span class="blink-2">.</span><span class="blink-3">.</span></pre>
+
+</div>
 
 <div class="meta h2">
   <div class="meta-date">November 22nd<br>2016</div>

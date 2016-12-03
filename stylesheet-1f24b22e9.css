@@ -154,3 +154,33 @@ code {
   font-family: Fira Mono, Menlo, Monaco, Courier, monospace;
   font-size: 14px;
 }
+
+.blink-1 {
+  animation: blink_underline 1s infinite;
+}
+
+.blink-2 {
+  animation: blink2 0.6s infinite;
+}
+
+.blink-3 {
+  animation: blink3 0.6s infinite;
+}
+
+@keyframes blink_underline {
+  50% { text-decoration: underline; }
+}
+
+@keyframes blink2 {
+  0%   { visibility: hidden;  }
+  33%  { visibility: hidden;  }
+  66%  { visibility: visible; }
+  100% { visibility: visible; }
+}
+
+@keyframes blink3 {
+  0%   { visibility: hidden;  }
+  33%  { visibility: hidden;  }
+  66%  { visibility: hidden;  }
+  100% { visibility: visible; }
+}

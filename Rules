@@ -16,6 +16,11 @@ compile '/**/*.md' do
   write item.identifier.without_ext + '/index.html'
 end
 
+compile '/stylesheet.css' do
+  hash = Digest::SHA1.hexdigest(item.raw_content)[0..8]
+  write item.identifier.without_ext + '-' + hash + '.css'
+end
+
 compile '/**/*' do
   write item.identifier.to_s
 end

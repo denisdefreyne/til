@@ -1,4 +1,5 @@
 require 'date'
+require 'digest/sha1'
 
 include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::HTMLEscape
